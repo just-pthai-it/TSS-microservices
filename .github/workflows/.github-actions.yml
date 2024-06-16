@@ -12,6 +12,7 @@ jobs:
       MY_VPS_USER: ${{ secrets.MY_VPS_USER }}
       MY_VPS_IP_ADDRESS: ${{ secrets.MY_VPS_IP_ADDRESS }}
       MY_VPS_PROJECT_PATH: ${{ secrets.MY_VPS_PROJECT_PATH }}
+      DAY_OF_WEEK: Monday
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -24,6 +25,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER"
+      - run: echo "$DAY_OF_WEEK"
       - run: eval $(ssh-agent -s)
       - run: ssh-add <(echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER")
       - run: ssh-keyscan -H $MY_VPS_IP_ADDRESS >> ~/.ssh/known_hosts
