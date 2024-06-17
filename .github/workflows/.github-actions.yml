@@ -42,7 +42,10 @@ jobs:
           ssh $MY_VPS_USER@$MY_VPS_IP_ADDRESS << 'EOF'
             whoami
             ls
-            cd projects/ESS-microservices
+            cd projects
+            ls
+            cd ESS-microservices
+            ls
             # cd $MY_VPS_PROJECT_PATH
             cat .env
           EOF
