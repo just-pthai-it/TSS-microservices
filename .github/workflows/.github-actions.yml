@@ -47,6 +47,6 @@ jobs:
             cd ESS-microservices
             ls
             # cd $MY_VPS_PROJECT_PATH
-            cat .env
+            cat ~/.bashrc
           EOF
       - run: echo "🍏 This job's status is ${{ job.status }}."
