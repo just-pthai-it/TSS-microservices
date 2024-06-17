@@ -25,7 +25,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER"
+      - run: echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER" 
       - run: echo "$DAY_OF_WEEK"
       # - run: ssh-agent -s
       # - run: eval $(ssh-agent -s)
@@ -39,9 +39,10 @@ jobs:
           ssh-add <(echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER")
           mkdir -p ~/.ssh
           ssh-keyscan -H $MY_VPS_IP_ADDRESS >> ~/.ssh/known_hosts
-          ssh $MY_VPS_USER@$MY_VPS_IP_ADDRESS
-          ll
-          cd projects/ESS-microservices
-          # cd $MY_VPS_PROJECT_PATH
-          cat .env
+          ssh $MY_VPS_USER@$MY_VPS_IP_ADDRESS << 'EOF'
+            ll
+            cd projects/ESS-microservices
+            # cd $MY_VPS_PROJECT_PATH
+            cat .env
+          EOF
       - run: echo "🍏 This job's status is ${{ job.status }}."
