@@ -48,5 +48,7 @@ jobs:
             ls
             # cd $MY_VPS_PROJECT_PATH
             cat ~/.bashrc
+            . ~/.bashrc
+            ll
           EOF
       - run: echo "🍏 This job's status is ${{ job.status }}."
