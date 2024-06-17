@@ -30,12 +30,15 @@ jobs:
       # - run: ssh-agent -s
       # - run: eval $(ssh-agent -s)
       # - run: ssh-add <(echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER")
-      - name: Set up SSH agent
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY_LOCALCOMPUTER }}
-      - run: ssh-keyscan -H $MY_VPS_IP_ADDRESS >> ~/.ssh/known_hosts
-      - run: ssh $MY_VPS_USER@$MY_VPS_IP_ADDRESS
-      - run: cd $MY_VPS_PROJECT_PATH
-      - run: touch abc.xyz
+      # - name: Set up SSH agent
+        # uses: webfactory/ssh-agent@v0.5.4
+        # with:
+          # ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY_LOCALCOMPUTER }}
+      - run: |
+          eval $(ssh-agent -s)
+          ssh-add <(echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER")
+          ssh-keyscan -H $MY_VPS_IP_ADDRESS >> ~/.ssh/known_hosts
+          ssh $MY_VPS_USER@$MY_VPS_IP_ADDRESS
+          cd $MY_VPS_PROJECT_PATH
+          cat .env
       - run: echo "🍏 This job's status is ${{ job.status }}."
