@@ -41,7 +41,7 @@ jobs:
           ssh-keyscan -H $MY_VPS_IP_ADDRESS >> ~/.ssh/known_hosts
           ssh $MY_VPS_USER@$MY_VPS_IP_ADDRESS << 'EOF'
             whoami
-            ll
+            ls
             cd projects/ESS-microservices
             # cd $MY_VPS_PROJECT_PATH
             cat .env
