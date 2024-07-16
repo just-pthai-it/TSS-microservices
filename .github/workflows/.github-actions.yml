@@ -26,6 +26,8 @@ jobs:
       - run: cat /proc/$$/stat | awk '{print $6}'
       - run: cat /proc/$$/stat | awk '{print $6}'
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: export ABC=abc
+      - run: env
       - run: |
           eval $(ssh-agent -s)
           ssh-add <(echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER")
