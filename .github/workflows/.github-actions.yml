@@ -24,6 +24,9 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: |
+          eval $(ssh-agent -s)
+          ssh-add <(echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER")
       - run: eval $(ssh-agent -s)
       - run: ssh-add <(echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER")
       - run: mkdir -p ~/.ssh
