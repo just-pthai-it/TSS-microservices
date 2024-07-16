@@ -29,6 +29,8 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER" 
       - run: echo "$DAY_OF_WEEK"
+      - run: echo "test" >> abc.txt
+      - run: cat abc.txt
       # - run: ssh-agent -s
       # - run: eval $(ssh-agent -s)
       # - run: ssh-add <(echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER")
@@ -36,21 +38,21 @@ jobs:
         # uses: webfactory/ssh-agent@v0.5.4
         # with:
           # ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY_LOCALCOMPUTER }}
-      - run: |
-          eval $(ssh-agent -s)
-          ssh-add <(echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER")
-          mkdir -p ~/.ssh
-          ssh-keyscan -H $MY_VPS_IP_ADDRESS >> ~/.ssh/known_hosts
-          ssh $MY_VPS_USER@$MY_VPS_IP_ADDRESS << 'EOF'
-            whoami
-            ls
-            cd projects
-            ls
-            cd ESS-microservices
-            ls
-            # cd $MY_VPS_PROJECT_PATH
-            cat ~/.bashrc
-            . ~/.bashrc
-            ll
-          EOF
+      # - run: |
+      #     eval $(ssh-agent -s)
+      #     ssh-add <(echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER")
+      #     mkdir -p ~/.ssh
+      #     ssh-keyscan -H $MY_VPS_IP_ADDRESS >> ~/.ssh/known_hosts
+      #     ssh $MY_VPS_USER@$MY_VPS_IP_ADDRESS << 'EOF'
+      #       whoami
+      #       ls
+      #       cd projects
+      #       ls
+      #       cd ESS-microservices
+      #       ls
+      #       # cd $MY_VPS_PROJECT_PATH
+      #       cat ~/.bashrc
+      #       . ~/.bashrc
+      #       ll
+      #     EOF
       - run: echo "🍏 This job's status is ${{ job.status }}."
