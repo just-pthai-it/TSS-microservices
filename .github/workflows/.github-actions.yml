@@ -29,15 +29,11 @@ jobs:
       - run: |
           eval $(ssh-agent -s)
           ssh-add <(echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER")
-          printenv SSH_AUTH_SOC
       - run: printenv SSH_AUTH_SOCK
       - run: |
           eval $(ssh-agent -s)
       - run: printenv SSH_AUTH_SOCK
       - run: ssh-add <(echo "$SSH_PRIVATE_KEY_LOCALCOMPUTER")
-      - run: mkdir -p ~/.ssh
-      - run: ssh-keyscan -H $MY_VPS_IP_ADDRESS >> ~/.ssh/known_hosts
-      - run: ssh $MY_VPS_USER@$MY_VPS_IP_ADDRESS
       # - name: Set up SSH agent
         # uses: webfactory/ssh-agent@v0.5.4
         # with:
