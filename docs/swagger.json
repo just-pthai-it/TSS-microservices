@@ -73,13 +73,13 @@
                   "items": {
                     "$ref": "#/definitions/FeedbackModel"
                   }
-                },
-                "limit": {
-                  "type": "integer"
-                },
-                "offset": {
-                  "type": "integer"
                 }
+              },
+              "limit": {
+                "type": "integer"
+              },
+              "offset": {
+                "type": "integer"
               }
             }
           }
@@ -462,18 +462,23 @@
           "additionalProperties": {
             "type": "string"
           },
-          "x-go-name": "PlaceHolder"
+          "x-go-name": "Placeholder"
         },
         "recipients": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "x-go-name": "Recipients"
+          "x-go-name": "Recipients",
+          "example": [
+            "email1@gmal.com",
+            "email2@gmail.com"
+          ]
         },
         "subject": {
           "type": "string",
-          "x-go-name": "Subject"
+          "x-go-name": "Subject",
+          "x-note": "All key must be capital the first character"
         }
       },
       "x-go-package": "TSS-microservices/core/http/requests/hermes-forms"
