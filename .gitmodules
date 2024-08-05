@@ -1,0 +1,3 @@
+[submodule "utconnect-common-setup"]
+	path = utconnect-common-setup
+	url = git@github.com:Utconnect/utconnect-common-setup.git
